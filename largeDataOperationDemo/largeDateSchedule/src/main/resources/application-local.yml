@@ -1,0 +1,37 @@
+debug: false
+spring:
+  aop:
+    proxy-target-class: true
+  datasource:
+    url: jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=192.168.66.166)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME=orcl)))
+    username: chenyuan
+    password: chenyuan
+    druid:
+      initial-size: 3
+      min-idle: 3
+      max-active: 10
+      max-wait: 60000
+      keep-alive: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 'x' FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filter:
+        wall:
+          enabled: true
+        stat:
+          enabled: false
+        slf4j:
+          enabled: true
+          connection-log-enabled: false
+  jpa:
+    database: oracle
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.Oracle10gDialect
